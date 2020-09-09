@@ -1,0 +1,54 @@
+﻿@model WEBUI.Models.ProductInfo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ProductInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dd>
+            <!--  @Html.DisplayFor(model => model.ProductImage)-->
+            <img src="~/images/@Html.DisplayFor(model => model.ProductImage)" alt="Image" style="height:300px; width:300px;" />
+
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+        <dd>
+            @{var value = Html.DisplayFor(model => model.Units).ToString();}
+            @if (int.Parse(@value) != 0)
+            {
+                @Html.Label("Available")
+            }
+            else
+            {
+                @Html.Label("Not Available")
+            }
+
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+<dd>
+        @{ var d = Html.DisplayFor(model => model.Price).ToString();
+            var dp = Html.DisplayFor(model => model.Discount).ToString();
+        }
+        @if (int.Parse(@dp) != 0)
+        {
+          @Html.Label("Disount ")
+            @Html.DisplayFor(model => model.Discount)
+
+        }
+    </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Products List", "Index")
+</p>

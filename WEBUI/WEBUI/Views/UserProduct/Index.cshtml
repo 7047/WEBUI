@@ -1,0 +1,41 @@
+﻿@using WEBUI.Models;
+@model IEnumerable<WEBUI.Models.ProductInfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    WEBUIEntities7 db = new WEBUIEntities7();
+}
+<h2>Products</h2>
+@using (Html.BeginForm())
+{
+    <div class="row">
+        @foreach (var item in Model)
+        {
+        <div class="column" style=" float: left; width: 20%; text-align:center; margin-Left:50px; padding: 10px 10px 10px 10px;">
+            <div class="card" style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+  border-radius:10px;">
+                <img src="~/images/@item.ProductImage" width="150" height="150" />
+                <br />
+                @Html.DisplayFor(modelItem => item.ProductName)
+                <br />
+                @Html.DisplayFor(modelItem => item.Price)
+            </div>
+
+            <br />
+            <div class="detailbtn" style="text-align:center;" margin-top:10px;>
+                <button type="button" class="btn btn-default">
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                </button>
+                <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart
+                </button>
+            </div>
+        </div>
+        }
+        </div>
+        }
