@@ -52,8 +52,8 @@ namespace WEBUI.Controllers
             {
                 db.UserFeedbacks.Add(userFeedback);
                 db.SaveChanges();
-               
-                return RedirectToAction("Details");
+
+                ViewBag.Message = "Succusfully Feedback Done";
                 
             }
 
